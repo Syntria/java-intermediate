@@ -1,32 +1,28 @@
+import java.util.*;
+import java.util.Map.Entry;
+import java.io.*;
+
 public class Main {
+    public static void main(String[] a) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String line = br.readLine();
+        String[] words = line.split(" ");
 
-    static public class Pair<A, B> {
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
 
-        private A first;
-        private B second;
+        for (String word : words) {
 
-        public Pair(A first, B second) {
+            treeMap.put(word, treeMap.getOrDefault(word, 0) + 1);
 
-            this.first = first;
-            this.second = second;
         }
 
-        public String toString() {
+        for (Entry<String, Integer> entry : treeMap.entrySet()) {
 
-            StringBuilder stringBuilder = new StringBuilder();
+            String str = "%s: %d".formatted(entry.getKey(), entry.getValue());
 
-            stringBuilder.append("(");
-            stringBuilder.append(this.first);
-            stringBuilder.append(", ");
-            stringBuilder.append(this.second);
-            stringBuilder.append(")");
+            System.out.println(str);
 
-            return stringBuilder.toString();
         }
-    }
 
-    public static void main(String[] args) {
-        Pair<String, Integer> p = new Pair<>("Ada", 36);
-        System.out.println(p);
     }
 }
