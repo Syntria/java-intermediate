@@ -1,28 +1,14 @@
 import java.util.*;
-import java.util.Map.Entry;
+import java.util.function.*;
 import java.io.*;
 
 public class Main {
     public static void main(String[] a) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String line = br.readLine();
-        String[] words = line.split(" ");
+        int n = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
 
-        TreeMap<String, Integer> treeMap = new TreeMap<>();
+        Function<Integer, Integer> multiplyAddOne = x -> x * x + 1;
 
-        for (String word : words) {
-
-            treeMap.put(word, treeMap.getOrDefault(word, 0) + 1);
-
-        }
-
-        for (Entry<String, Integer> entry : treeMap.entrySet()) {
-
-            String str = "%s: %d".formatted(entry.getKey(), entry.getValue());
-
-            System.out.println(str);
-
-        }
+        System.out.println(multiplyAddOne.apply(n));
 
     }
 }
