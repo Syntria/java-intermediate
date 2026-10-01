@@ -6,9 +6,14 @@ public class Main {
     public static void main(String[] a) throws IOException {
         int n = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
 
-        Function<Integer, Integer> multiplyAddOne = x -> x * x + 1;
+        Function<Integer, Integer> multiplyAddOne2 = (Main::multiplyAddOne);
 
-        System.out.println(multiplyAddOne.apply(n));
+        System.out.println(multiplyAddOne2.apply(n));
 
+    }
+
+    public static int multiplyAddOne(int x) {
+
+        return x * x + 1;
     }
 }
