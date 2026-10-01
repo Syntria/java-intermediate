@@ -1,0 +1,54 @@
+{
+  "course": "java-intermediate",
+  "language": "java",
+  "language_id": 62,
+  "entrypoint": "Main.java",
+  "version": 1,
+  "content_hash": "032c1d88f35ff3de",
+  "lessons": [
+    {
+      "slug": "generics",
+      "tests_hash": "4619480b083e"
+    },
+    {
+      "slug": "collections",
+      "tests_hash": "cbe6c1fdb32b"
+    },
+    {
+      "slug": "lambdas",
+      "tests_hash": "3ec92c4fc92f"
+    },
+    {
+      "slug": "streams",
+      "tests_hash": "2ef2107d7b83"
+    },
+    {
+      "slug": "exceptions",
+      "tests_hash": "8081947e5296"
+    },
+    {
+      "slug": "optional",
+      "tests_hash": "5059faee4fbb"
+    },
+    {
+      "slug": "method-references",
+      "tests_hash": "6c874d83bddc"
+    },
+    {
+      "slug": "records",
+      "tests_hash": "760037c27009"
+    },
+    {
+      "slug": "files",
+      "tests_hash": "cfb90c844e45"
+    },
+    {
+      "slug": "date-time",
+      "tests_hash": "1891c97e0fb6"
+    },
+    {
+      "slug": "threads",
+      "tests_hash": "831e535aa6cf"
+    }
+  ]
+}
