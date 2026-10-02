@@ -1,19 +1,20 @@
 import java.util.*;
-import java.util.function.*;
+import java.util.stream.*;
 import java.io.*;
 
 public class Main {
     public static void main(String[] a) throws IOException {
-        int n = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
+        String line = new BufferedReader(new InputStreamReader(System.in)).readLine();
 
-        Function<Integer, Integer> multiplyAddOne2 = (Main::multiplyAddOne);
+        String[] nums = line.split(" ");
 
-        System.out.println(multiplyAddOne2.apply(n));
+        int sum = Arrays.stream(nums)
+                .mapToInt(Integer::parseInt)
+                .filter(n -> n % 2 == 0)
+                .map(n -> n * n)
+                .sum();
 
-    }
+        System.out.println(sum);
 
-    public static int multiplyAddOne(int x) {
-
-        return x * x + 1;
     }
 }
