@@ -1,20 +1,24 @@
-import java.util.*;
-import java.util.stream.*;
-import java.io.*;
-
 public class Main {
-    public static void main(String[] a) throws IOException {
-        String line = new BufferedReader(new InputStreamReader(System.in)).readLine();
+    static int divide(int a, int b) throws ArithmeticException {
+        // Reject the b == 0 case with a throw STATEMENT:
+        // throw new SomeException("message");
+        // (`throws` belongs in a method signature; it is not a statement.)
+        //
+        if (b == 0)
+            throw new ArithmeticException("divide by zero");
 
-        String[] nums = line.split(" ");
+        return a / b;
+    }
 
-        int sum = Arrays.stream(nums)
-                .mapToInt(Integer::parseInt)
-                .filter(n -> n % 2 == 0)
-                .map(n -> n * n)
-                .sum();
+    public static void main(String[] args) throws Exception {
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        try {
 
-        System.out.println(sum);
-
+            System.out.println("result: " + divide(a, b));
+        } catch (ArithmeticException e) {
+            System.out.println("error: " + e.getMessage());
+        }
     }
 }
