@@ -1,24 +1,24 @@
-public class Main {
-    static int divide(int a, int b) throws ArithmeticException {
-        // Reject the b == 0 case with a throw STATEMENT:
-        // throw new SomeException("message");
-        // (`throws` belongs in a method signature; it is not a statement.)
-        //
-        if (b == 0)
-            throw new ArithmeticException("divide by zero");
+import java.util.*;
+import java.io.*;
 
-        return a / b;
+public class Main {
+    static Optional<Integer> safeParse(String s) {
+
+        try {
+            return Optional.of(Integer.parseInt(s));
+
+        } catch (NumberFormatException e) {
+            return Optional.empty();
+        }
     }
 
-    public static void main(String[] args) throws Exception {
-        java.util.Scanner sc = new java.util.Scanner(System.in);
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        try {
+    public static void main(String[] a) throws IOException {
+        String line = new BufferedReader(new InputStreamReader(System.in)).readLine();
+        // Double the parsed value with .map(...), fall back to -1 with
+        // .orElse(...), and print the result.
+        int number = safeParse(line).map(n -> n * 2).orElse(-1);
 
-            System.out.println("result: " + divide(a, b));
-        } catch (ArithmeticException e) {
-            System.out.println("error: " + e.getMessage());
-        }
+        System.out.println(number);
+
     }
 }
