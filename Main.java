@@ -1,24 +1,56 @@
-import java.util.*;
-import java.util.stream.*;
-import java.io.*;
-
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        List<String> words = new ArrayList<>();
-        for (int i = 0; i < n; i++)
-            words.add(br.readLine());
+    // The grader compiles with JDK 13, which has no `record` keyword.
+    // Write, by hand, the class a record would have generated: final,
+    // private final fields, a constructor taking both components, and a
+    // toString() that produces exactly Person[name=..., age=...]
+    //
+    // static final class Person { ... }
 
-        // Sort words by length. Comparator.comparingInt wants a function
-        // from String to int — pass it as a method reference.
-        // Then print each word on its own line with forEach and another
-        // method reference (note the `::`, not a `.`).
+    public static void main(String[] args) throws Exception {
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        String name = sc.nextLine();
+        int age = Integer.parseInt(sc.nextLine());
+        // Build a Person and print it.
         //
+        Person person = new Person(name, age);
 
-        words.stream()
-                .sorted(Comparator.comparingInt(String::length))
-                .forEach(System.out::println);
-        ;
+        System.out.println(person.toString());
+
+    }
+
+    static final class Person {
+
+        private final int age;
+        private final String name;
+
+        public Person(String name, int age) {
+
+            this.age = age;
+            this.name = name;
+        }
+
+        public String name() {
+
+            return this.name;
+        }
+
+        public int age() {
+
+            return this.age;
+        }
+
+        public String toString() {
+
+            StringBuilder string = new StringBuilder();
+
+            string.append("Person[")
+                    .append("name=").append(this.name)
+                    .append(", ")
+                    .append("age=").append(this.age)
+                    .append("]");
+
+            return string.toString();
+
+        }
     }
 }
