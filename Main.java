@@ -1,24 +1,24 @@
 import java.util.*;
+import java.util.stream.*;
 import java.io.*;
 
 public class Main {
-    static Optional<Integer> safeParse(String s) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        List<String> words = new ArrayList<>();
+        for (int i = 0; i < n; i++)
+            words.add(br.readLine());
 
-        try {
-            return Optional.of(Integer.parseInt(s));
+        // Sort words by length. Comparator.comparingInt wants a function
+        // from String to int — pass it as a method reference.
+        // Then print each word on its own line with forEach and another
+        // method reference (note the `::`, not a `.`).
+        //
 
-        } catch (NumberFormatException e) {
-            return Optional.empty();
-        }
-    }
-
-    public static void main(String[] a) throws IOException {
-        String line = new BufferedReader(new InputStreamReader(System.in)).readLine();
-        // Double the parsed value with .map(...), fall back to -1 with
-        // .orElse(...), and print the result.
-        int number = safeParse(line).map(n -> n * 2).orElse(-1);
-
-        System.out.println(number);
-
+        words.stream()
+                .sorted(Comparator.comparingInt(String::length))
+                .forEach(System.out::println);
+        ;
     }
 }
