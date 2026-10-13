@@ -1,23 +1,21 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.*;
+import java.util.stream.*;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        AtomicInteger counter = new AtomicInteger(0);
-        Thread[] threads = new Thread[4];
-        for (int i = 0; i < 4; i++) {
-            threads[i] = new Thread(() -> {
-                // Increment counter 250 times.
-                // Declare a NEW loop variable here: i is already in scope,
-                // and a lambda may neither reuse its name nor modify it.
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-                for (int j = 1; j <= 250; j++) {
-                    counter.incrementAndGet();
-                }
-            });
-            threads[i].start();
-        }
-        for (Thread t : threads)
-            t.join();
-        System.out.println(counter.get());
+        // br.lines() is a Stream<String> over stdin.
+        // Keep the lines with at least one non-whitespace character, count
+        // them, and print the count. Compare content with .isEmpty() after
+        // trimming — line != "" compares references and keeps everything.
+        //
+
+        long count = br.lines()
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .count();
+
+        System.out.println(count);
     }
 }
