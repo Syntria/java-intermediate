@@ -1,21 +1,18 @@
+import java.time.*;
+import java.time.temporal.ChronoUnit;
 import java.io.*;
-import java.util.stream.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        LocalDate a = LocalDate.parse(br.readLine());
+        LocalDate b = LocalDate.parse(br.readLine());
 
-        // br.lines() is a Stream<String> over stdin.
-        // Keep the lines with at least one non-whitespace character, count
-        // them, and print the count. Compare content with .isEmpty() after
-        // trimming — line != "" compares references and keeps everything.
+        // ChronoUnit.DAYS.between(...) gives a SIGNED count of days.
+        // Nothing promises which date comes first, so print the magnitude.
         //
+        long count = ChronoUnit.DAYS.between(a, b);
 
-        long count = br.lines()
-                .map(String::trim)
-                .filter(s -> !s.isEmpty())
-                .count();
-
-        System.out.println(count);
+        System.out.println(Math.abs(count));
     }
 }
